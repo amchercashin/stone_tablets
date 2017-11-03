@@ -2,8 +2,37 @@
 <html>
 <head>
     <script>
+        
+        window.addEventListener('load', function() {
+
+        // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+        if (typeof web3 !== 'undefined') {
+            // Use Mist/MetaMask's provider
+            window.web3 = new Web3(web3.currentProvider);
+        } else {
+            console.log('No web3? You should consider trying MetaMask!')
+            // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
+            window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+        }
+
+        // Now you can start your app & access web3 freely:
+        startApp()
+
+        })
+
         function make_table() {
-            
+            var tablet_factory = document.getElementById("tablet_factory").value;
+            web3.eth.sendTransaction({from:web3.eth.accounts[0], to:tablet_factory, value:"", gas:850000, gasPrice:"4000000000"}, 
+                function(error, result){
+                    if(!error) {
+                        console.log(result)
+                        document.getElementById("new_tablet_address").innerHTML = result;
+                    }
+                    else {
+                        console.error(error);
+                    }
+                }
+            );
         }
 
     </script>
@@ -12,8 +41,10 @@
 <body>
     <fieldset>
         <legend><h1>Make new stone table</h1></legend>
-
-        <input type="button" value="show" onclick="make_table"></p>
+        
+        Input tablet factory address: <br>
+        <input type="text" size="42" id="tablet_factory"></input>
+        <input type="button" value="create tablet" onclick="make_table"></p>
 
         <p>Tablet address: <code style="background-color:gainsboro;" id="new_tablet_address"></code></p>
 
