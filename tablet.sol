@@ -5,7 +5,7 @@ contract tablet {
     address public tablet_owner;
     mapping(address => bool) public scribes;
     
-    event new_record(address indexed tablet_address, address indexed scribe, uint block_number, uint indexed block_time, uint record_nubmer);
+    event new_record(address indexed tablet_address, address indexed scribe, uint record_nubmer);
     
     function tablet(address tablet_creator) public {
         tablet_owner = tablet_creator;
@@ -30,7 +30,7 @@ contract tablet {
     function add_record(string record) public {
         require(scribes[msg.sender]);
         require(bytes(record).length <= 2048);
-        new_record(this, msg.sender, block.number, block.timestamp, records.push(record));
+        new_record(this, msg.sender, records.push(record));
     }
     
     function tablet_length () public constant returns (uint256) {
