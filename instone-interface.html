@@ -39,7 +39,7 @@
             var new_tablet = table_factory_instance.new_tablet_created({tablet_creator: web3.eth.accounts[0]}, {fromBlock: 0, toBlock: 'latest'}, function(error, result) {
                     if (!error) {
                         console.log(result);
-                        document.getElementById("new_tablet_address").innerHTML = result.args.new_tablet_address;
+                        document.getElementById("new_tablet_address").innerHTML = result.args.tablet_address;
                     }
                     else {
                         console.error(error);
