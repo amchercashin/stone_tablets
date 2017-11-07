@@ -25,7 +25,7 @@
             var ABI = [{"constant":true,"inputs":[],"name":"creators_count","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"amount","type":"uint256"}],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"create_tablet","outputs":[{"name":"","type":"address"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"tablets","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"creator_address","type":"address"}],"name":"is_creator","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"creators","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tablet_creator","type":"address"},{"indexed":false,"name":"tablet_address","type":"address"},{"indexed":true,"name":"block_number","type":"uint256"},{"indexed":true,"name":"block_time","type":"uint256"},{"indexed":false,"name":"creators_count","type":"uint256"}],"name":"new_tablet_created","type":"event"}];
             var table_factory = web3.eth.contract(ABI);
             var table_factory_instance = table_factory.at(tablet_factory_address);
-            var new_tablet_address = table_factory_instance.create_tablet({from:web3.eth.accounts[0], to:tablet_factory, value:"", gas:850000, gasPrice:"4000000000"},
+            table_factory_instance.create_tablet({from:web3.eth.accounts[0], to:tablet_factory, value:"", gas:850000, gasPrice:"4000000000"},
                 function(error, result){
                     if(!error) {
                         console.log(result)
@@ -36,7 +36,13 @@
                     }
                 }
             );
-            document.getElementById("new_tablet_address").innerHTML = new_tablet_address;
+            table_factory_instance.new_tablet_created([{tablet_creator: web3.eth.accounts[0]}] [] , function(error, result) {
+                    if (!error)
+                        console.log(result);
+                        document.getElementById("new_tablet_address").innerHTML = result;
+                }
+            );
+            
             // contract.call().getNumber();         
             
             // web3.eth.sendTransaction({from:web3.eth.accounts[0], to:tablet_factory, value:"", gas:850000, gasPrice:"4000000000"}, 
