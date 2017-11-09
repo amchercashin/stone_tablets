@@ -43,7 +43,7 @@
                                                     function() {
                                                         is_created = tablet_is_created(tablet_factory_instance, web3.eth.accounts[0], 
                                                                                         new_tablet_calculated_address, 
-                                                                                        creator_tablets_count);
+                                                                                        creator_tablets_count, is_created);
                                                         console.log(is_created);
                                                         if (is_created) {
                                                             document.getElementById("new_tablet_address").innerHTML = new_tablet_calculated_address;
@@ -83,20 +83,15 @@
     
         }
     
-        function tablet_is_created(tablet_factory_instance, creator, tablet_address, tablet_n) {
-            var is_created;
+        function tablet_is_created(tablet_factory_instance, creator, tablet_address, tablet_n, is_created) {
             tablet_factory_instance.tablets.call(creator, tablet_n, function(error, result) {
                 if(!error) {
                     console.log("tablet_address: " + tablet_address + "/n" + "result: " + result);
-                    console.log(tablet_address == result);
-                    console.log(is_created);
                     is_created = tablet_address == result;
                 } else {
                     console.error(error);
                 }
             })
-            console.log("passing" + is_created)
-            return is_created;
         }
 
     </script>
