@@ -44,6 +44,7 @@
                                                         is_created = tablet_is_created(tablet_factory_instance, web3.eth.accounts[0], 
                                                                                         new_tablet_calculated_address, 
                                                                                         creator_tablets_count);
+                                                        console.log(is_created);
                                                         if (is_created) {
                                                             document.getElementById("new_tablet_address").innerHTML = new_tablet_calculated_address;
                                                             clearInterval(tablet_listener);
