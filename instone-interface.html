@@ -28,7 +28,7 @@
                     if(!error) {                    
                         new_tablet_calculated_address = result;
                         console.log("new_tablet_calculated_address: " + new_tablet_calculated_address);
-                        console.log(tablet_factory_instance);
+                        //console.log(tablet_factory_instance);
                         tablet_factory_instance.creator_tablets_count.call(web3.eth.accounts[0],
                             function(error, result){
                                 if(!error) {
@@ -38,10 +38,11 @@
                                         function(error, result){
                                             if(!error) {
                                                 console.log("Create tablet tx sent, hash: " + result)
-                                                while (is_created = false) {
+                                                while (is_created == false) {
                                                     setTimeout(is_created = tablet_is_created(tablet_factory_instance, web3.eth.accounts[0], 
                                                                                             new_tablet_calculated_address, 
                                                                                             creator_tablets_count), 10000);
+                                                    console.log(is_created);
                                                 }
                                                 document.getElementById("new_tablet_address").innerHTML = new_tablet_calculated_address;
                                             }
