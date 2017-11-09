@@ -43,17 +43,21 @@
                                             var tablet = web3.eth.contract(tablet_ABI);
                                             var tablet_instance = tablet.at(new_tablet_calculated_address);
                                             console.log("new_tablet_calculated_address: " + new_tablet_calculated_address);
+                                            
+                                            
+                                            // AS OF 09.11.2017 METAMASK HAVE SOME ISSUES WITH HANDLING EVENTS
+                                            // MAYBE ENEABLE THIS LATER
 
-                                            tablet_instance.new_tablet_created({tablet_creator: web3.eth.accounts[0]}, {fromBlock: current_block_number, toBlock: 'latest'}, function(error, result) {
-                                                    if (!error) {
-                                                        console.log("new tablet created event: "+result);
-                                                        document.getElementById("new_tablet_address").innerHTML = result.args.tablet_address;
-                                                    }
-                                                    else {
-                                                        console.error(error);
-                                                    }
-                                                }
-                                            );
+                                            // tablet_instance.new_tablet_created({tablet_creator: web3.eth.accounts[0]}, {fromBlock: current_block_number, toBlock: 'latest'}, function(error, result) {
+                                            //         if (!error) {
+                                            //             console.log("new tablet created event: "+result);
+                                            //             document.getElementById("new_tablet_address").innerHTML = result.args.tablet_address;
+                                            //         }
+                                            //         else {
+                                            //             console.error(error);
+                                            //         }
+                                            //     }
+                                            // );
                                         }
                                         else {
                                             console.error(error);
