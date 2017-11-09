@@ -85,7 +85,7 @@
                     console.log("tablet_address: " + tablet_address + "/n" + "result: " + result);
                     is_created = tablet_address == result;
                     if (is_created) {
-                        document.getElementById("new_tablet_address").innerHTML = new_tablet_calculated_address;
+                        document.getElementById("new_tablet_address").innerHTML = tablet_address;
                         clearInterval(tablet_listener);
                     }
                 } else {
