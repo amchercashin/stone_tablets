@@ -28,16 +28,25 @@
                     if(!error) {                    
                         new_tablet_calculated_address = result;
                         console.log("new_tablet_calculated_address: " + new_tablet_calculated_address);
-                        tablet_factory_instance.create_tablet({from:web3.eth.accounts[0], to:tablet_factory, value:"", gas:850000, gasPrice:"4000000000"},
+                        var creator_tablets_count = tablet_factory_instance.creator_tablets_count({from:web3.eth.accounts[0], to:tablet_factory, value:web3.eth.accounts[0], 
                             function(error, result){
                                 if(!error) {
-                                    console.log("Create tablet tx sent, hash: " + result)
-                                    
+                                    tablet_factory_instance.create_tablet({from:web3.eth.accounts[0], to:tablet_factory, value:"", gas:850000, gasPrice:"4000000000"},
+                                        function(error, result){
+                                            if(!error) {
+                                                console.log("Create tablet tx sent, hash: " + result)
+                                                creator_tablets_count
+                                            }
+                                            else {
+                                                console.error(error);
+                                            }
+                                        }
+                                    );
                                 }
                                 else {
                                     console.error(error);
                                 }
-                            }
+                            }    
                         );
                     }
                     else {
