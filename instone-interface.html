@@ -28,7 +28,7 @@
                     if(!error) {                    
                         new_tablet_calculated_address = result;
                         console.log("new_tablet_calculated_address: " + new_tablet_calculated_address);
-                        tablet_factory_instance.creator_tablets_count.call({data:web3.eth.accounts[0]}, 
+                        tablet_factory_instance.creator_tablets_count.call(web3.eth.accounts[0], {}, 
                             function(error, result){
                                 if(!error) {
                                     var creator_tablets_count = result;
