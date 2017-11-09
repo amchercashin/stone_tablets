@@ -14,14 +14,6 @@ contract tablet_factory {
         tablet_factory_owner = msg.sender;
     }
 
-    function is_creator(address creator_address) public constant returns(bool) {
-        return tablets[creator_address].length > 0;
-    }
-    
-    function creators_count() public constant returns(uint) {
-        return creators.length;
-    }
-
     function create_tablet() public payable returns (address) {
         if (!is_creator(msg.sender)) creators.push(msg.sender);
         address new_tablet_address = new tablet(msg.sender);
@@ -32,6 +24,19 @@ contract tablet_factory {
     function withdraw(uint amount) external {
         require(msg.sender == tablet_factory_owner);
         msg.sender.transfer(amount);
+    }
+    
+    
+    function is_creator(address creator_address) public constant returns(bool) {
+        return tablets[creator_address].length > 0;
+    }
+    
+    function creator_tablets_count(address creator_address) public constant returns(uint) {
+        return tablets[creator_address].length;
+    }
+    
+    function creators_count() public constant returns(uint) {
+        return creators.length;
     }
     
 }
