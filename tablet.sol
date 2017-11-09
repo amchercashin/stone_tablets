@@ -5,8 +5,7 @@ contract tablet {
     address public tablet_owner;
     mapping(address => bool) public scribes;
     
-    event new_tablet_created(address indexed 
-    , address tablet_address);
+    event new_tablet_created(address indexed tablet_creator, address tablet_address);
     event new_record(address indexed tablet_address, address indexed scribe, uint record_nubmer);
     
     function tablet(address tablet_creator) public {
