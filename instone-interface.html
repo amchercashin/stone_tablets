@@ -28,9 +28,11 @@
                     if(!error) {                    
                         new_tablet_calculated_address = result;
                         console.log("new_tablet_calculated_address: " + new_tablet_calculated_address);
-                        var creator_tablets_count = tablet_factory_instance.creator_tablets_count({from:web3.eth.accounts[0], to:tablet_factory, value:web3.eth.accounts[0], 
+                        tablet_factory_instance.creator_tablets_count.call({creator_address:web3.eth.accounts[0]}, 
                             function(error, result){
                                 if(!error) {
+                                    var creator_tablets_count = result;
+                                    console.log("creator_tablets_count: " + creator_tablets_count);
                                     tablet_factory_instance.create_tablet({from:web3.eth.accounts[0], to:tablet_factory, value:"", gas:850000, gasPrice:"4000000000"},
                                         function(error, result){
                                             if(!error) {
