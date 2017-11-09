@@ -88,11 +88,14 @@
             tablet_factory_instance.tablets.call(creator, tablet_n, function(error, result) {
                 if(!error) {
                     console.log("tablet_address: " + tablet_address + "/n" + "result: " + result);
+                    console.log(tablet_address == result);
+                    console.log(is_created);
                     is_created = tablet_address == result;
                 } else {
                     console.error(error);
                 }
             })
+            console.log("passing" + is_created)
             return is_created;
         }
 
