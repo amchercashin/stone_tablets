@@ -69,7 +69,7 @@
         }
     
         function tablet_is_created(tablet_factory_instance, creator, tablet_address, tablet_n) {
-            var is_created = false;
+            var is_created;
             tablet_factory_instance.tablets.call(creator, tablet_n, function(error, result) {
                 if(!error) {
                     console.log("tablet_address: " + tablet_address + "/n" + "result: " + result);
