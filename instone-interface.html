@@ -28,11 +28,12 @@
                     if(!error) {                    
                         new_tablet_calculated_address = result;
                         console.log("new_tablet_calculated_address: " + new_tablet_calculated_address);
+                        console.log(tablet_factory_instance);
                         tablet_factory_instance.creator_tablets_count.call(web3.eth.accounts[0],
                             function(error, result){
                                 if(!error) {
-                                    var tablets_count = result;
-                                    console.log("creator_tablets_count: " + tablets_count);
+                                    var creator_tablets_count = result;
+                                    console.log("creator_tablets_count: " + creator_tablets_count);
                                     tablet_factory_instance.create_tablet({from:web3.eth.accounts[0], to:tablet_factory, value:"", gas:850000, gasPrice:"4000000000"},
                                         function(error, result){
                                             if(!error) {
@@ -40,7 +41,7 @@
                                                 while (is_created = false) {
                                                     setTimeout(is_created = tablet_is_created(tablet_factory_instance, web3.eth.accounts[0], 
                                                                                             new_tablet_calculated_address, 
-                                                                                            tablets_count), 10000);
+                                                                                            creator_tablets_count), 10000);
                                                 }
                                                 document.getElementById("new_tablet_address").innerHTML = new_tablet_calculated_address;
                                             }
