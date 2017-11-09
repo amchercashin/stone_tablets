@@ -39,13 +39,27 @@
                                             if(!error) {
                                                 console.log("Create tablet tx sent, hash: " + result)
                                                 var is_created = false;
-                                                while (is_created == false) {
-                                                    setTimeout(function() {
-                                                        console.log("is_created");}
-                                                    , 10000);
-                                                    console.log(is_created);
-                                                }
-                                                document.getElementById("new_tablet_address").innerHTML = new_tablet_calculated_address;
+                                                var tablet_listener = setInterval(
+                                                    function() {
+                                                        is_created = tablet_is_created(tablet_factory_instance, web3.eth.accounts[0], 
+                                                                                        new_tablet_calculated_address, 
+                                                                                        creator_tablets_count);
+                                                        if (is_created) {
+                                                            document.getElementById("new_tablet_address").innerHTML = new_tablet_calculated_address;
+                                                            clearInterval(tablet_listener);
+                                                        }
+                                                    }
+                                                , 10000);
+                                                // while (is_created == false) {
+                                                //     setTimeout(function() {
+                                                //         is_created = tablet_is_created(tablet_factory_instance, web3.eth.accounts[0], 
+                                                //                                             new_tablet_calculated_address, 
+                                                //                                             creator_tablets_count);
+                                                //         }
+                                                //     , 10000);
+                                                //     console.log(is_created);
+                                                // }
+                                                
                                             }
                                             else {
                                                 console.error(error);
