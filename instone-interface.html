@@ -37,7 +37,7 @@
             var tablet_factory_ABI = [{"constant":true,"inputs":[],"name":"creators_count","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"amount","type":"uint256"}],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"create_tablet","outputs":[{"name":"","type":"address"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"tablets","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"creator_address","type":"address"}],"name":"is_creator","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"creators","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"creator_address","type":"address"}],"name":"creator_tablets_count","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}];
             var tablet_factory = web3.eth.contract(tablet_factory_ABI);
             var tablet_factory_instance = tablet_factory.at(tablet_factory_address);
-            //var new_tablet_calculated_address;
+            var new_tablet_calculated_address;
             tablet_factory_instance.create_tablet.call({},
                 got_tablet_address
             );
@@ -45,9 +45,9 @@
     
         }
 
-        function got_tablet_address(error, result, tablet_factory_instance) {
+        function got_tablet_address(error, result) {
                     if(!error) {                    
-                        var new_tablet_calculated_address = result;
+                        new_tablet_calculated_address = result;
                         console.log("new_tablet_calculated_address: " + new_tablet_calculated_address);
                         //console.log(tablet_factory_instance);
                         tablet_factory_instance.creator_tablets_count.call(web3.eth.accounts[0],
