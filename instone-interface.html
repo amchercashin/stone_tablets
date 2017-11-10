@@ -39,7 +39,7 @@
             var tablet_factory_instance = tablet_factory.at(tablet_factory_address);
             var new_tablet_calculated_address;
             tablet_factory_instance.create_tablet.call({},
-                got_tablet_address()
+                got_tablet_address(error, result)
             );
 
     
@@ -51,7 +51,7 @@
                         console.log("new_tablet_calculated_address: " + new_tablet_calculated_address);
                         //console.log(tablet_factory_instance);
                         tablet_factory_instance.creator_tablets_count.call(web3.eth.accounts[0],
-                            got_tablets_count()
+                            got_tablets_count(error, result)
                         );
                     }
                     else {
