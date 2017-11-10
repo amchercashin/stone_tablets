@@ -39,27 +39,13 @@
             var tablet_factory_instance = tablet_factory.at(tablet_factory_address);
             var new_tablet_calculated_address;
             tablet_factory_instance.create_tablet.call({},
-                got_tablet_address(error, result)
-            );
-
-    
-        }
-
-        function got_tablet_address(error, result) {
+                function(error, result){
                     if(!error) {                    
                         new_tablet_calculated_address = result;
                         console.log("new_tablet_calculated_address: " + new_tablet_calculated_address);
                         //console.log(tablet_factory_instance);
                         tablet_factory_instance.creator_tablets_count.call(web3.eth.accounts[0],
-                            got_tablets_count(error, result)
-                        );
-                    }
-                    else {
-                        console.error(error);
-                    }
-                }
-        
-                function got_tablets_count(error, result) {
+                            function(error, result){
                                 if(!error) {
                                     var creator_tablets_count = result;
                                     console.log("creator_tablets_count: " + creator_tablets_count);
@@ -87,8 +73,18 @@
                                 else {
                                     console.error(error);
                                 }
-                }    
+                            }    
+                        );
+                    }
+                    else {
+                        console.error(error);
+                    }
+                }
+            );
 
+    
+        }
+    
         function tablet_is_created(tablet_factory_instance, creator, tablet_address, tablet_n, is_created, tablet_listener) {
             tablet_factory_instance.tablets.call(creator, tablet_n, function(error, result) {
                 if(!error) {
