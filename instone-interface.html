@@ -52,7 +52,7 @@
                                     tablet_factory_instance.create_tablet({from:web3.eth.accounts[0], to:tablet_factory, value:"", gas:850000, gasPrice:"4000000000"},
                                         function(error, result){
                                             if(!error) {
-                                                document.getElementById("new_tablet_address").innerHTML = "awaiting for tablet is created";
+                                                document.getElementById("new_tablet_address").innerHTML = "pending table creation";
                                                 document.getElementById("new_tablet_address").className = "pending";
                                                 console.log("Create tablet tx sent, hash: " + result)
                                                 var is_created = false;
@@ -92,6 +92,7 @@
                     is_created = tablet_address == result;
                     if (is_created) {
                         document.getElementById("new_tablet_address").innerHTML = tablet_address;
+                        document.getElementById("new_tablet_address").className = "";
                         clearInterval(tablet_listener);
                     }
                 } else {
