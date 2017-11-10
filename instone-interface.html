@@ -39,17 +39,17 @@
             var tablet_factory_instance = tablet_factory.at(tablet_factory_address);
             //var new_tablet_calculated_address;
             tablet_factory_instance.create_tablet.call({},
-                got_tablet_address(tablet_factory_instance)
+                got_tablet_address()
             );
 
     
         }
 
-        function got_tablet_address(error, result, tablet_factory_instance) {
+        function got_tablet_address(error, result) {
                     if(!error) {                    
                         var new_tablet_calculated_address = result;
                         console.log("new_tablet_calculated_address: " + new_tablet_calculated_address);
-                        //console.log(tablet_factory_instance);
+                        console.log(tablet_factory_instance);
                         tablet_factory_instance.creator_tablets_count.call(web3.eth.accounts[0],
                             got_tablets_count()
                         );
