@@ -170,7 +170,6 @@
                         console.log("records_count " + records_count)
 
                         var r;
-                        var r_;
                         for (r = 0; r < records_count; r++) {
                             (function (r) {
                                 console.log(r);
@@ -179,7 +178,7 @@
                                         console.log(record);
                                         var new_record_html = `
                                         <tr>
-                                            <td>` + r + 1 + `</td>
+                                            <td>` + parseInt(r) + 1 + `</td>
                                             <td>` + record + `</td>
                                         </tr>
                                         `
