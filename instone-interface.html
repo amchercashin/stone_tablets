@@ -33,10 +33,7 @@
         })
 
         function make_table() {
-            var tablet_factory_address = document.getElementById("tablet_factory").value;
-            var tablet_factory_ABI = [{"constant":true,"inputs":[],"name":"creators_count","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"amount","type":"uint256"}],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"create_tablet","outputs":[{"name":"","type":"address"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"tablets","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"creator_address","type":"address"}],"name":"is_creator","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"creators","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"creator_address","type":"address"}],"name":"creator_tablets_count","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}];
-            var tablet_factory = web3.eth.contract(tablet_factory_ABI);
-            var tablet_factory_instance = tablet_factory.at(tablet_factory_address);
+            var tablet_factory_instance = get_tablet_factory_instance();
             var new_tablet_calculated_address;
             tablet_factory_instance.create_tablet.call({},
                 function(error, result){
@@ -84,6 +81,13 @@
 
     
         }
+
+        function get_tablet_factory_instance () {
+            var tablet_factory_address = document.getElementById("tablet_factory").value;
+            var tablet_factory_ABI = [{"constant":true,"inputs":[],"name":"creators_count","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"amount","type":"uint256"}],"name":"withdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"create_tablet","outputs":[{"name":"","type":"address"}],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"tablets","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"creator_address","type":"address"}],"name":"is_creator","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"creators","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"creator_address","type":"address"}],"name":"creator_tablets_count","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"}];
+            var tablet_factory = web3.eth.contract(tablet_factory_ABI);
+            return tablet_factory.at(tablet_factory_address);
+        }
     
         function tablet_is_created(tablet_factory_instance, creator, tablet_address, tablet_n, is_created, tablet_listener) {
             tablet_factory_instance.tablets.call(creator, tablet_n, function(error, result) {
@@ -101,6 +105,45 @@
             })
         }
 
+        function show_tablets() {
+            var creator_address = web3.eth.accounts[0];
+            var tablet_factory_instance = get_tablet_factory_instance();
+             
+            tablet_factory_instance.creator_tablets_count.call({},
+                function(error, tablets_count){
+                    if (!error) {
+                        var my_tablets_table_html = 
+                        `
+                        <table>
+                            <tr>
+                                <th>Name</th>
+                                <th>Address</th>
+                            </tr>                        
+                        `
+
+                        for (t=0; t==tablets_count-1; t++) {
+                            tablet_factory_instance.tablets.call({creator_address, t}, function(error, tablet) {
+                                if (!error) {
+                                    var new_tablet_html = `
+                                    <tr>
+                                        <td>` + tablet[0] `</td>
+                                        <td>` + tablet[1] `</td>
+                                    </tr>
+                                    `
+                                    my_tablets_table_html = my_tablets_table_html + new_tablet_html;
+                                    document.getElementById("my_tablets").innerHTML = my_tablets_table_html + " </table>";
+                                }
+                                else {
+                                    console.log(error);
+                                }
+                            })                           
+                        }
+                        
+                    } else {
+                        console.error(error);
+                    }
+        }
+
     </script>
 </head>
 
@@ -114,6 +157,16 @@
 
         <p>Tablet address: <code style="background-color:gainsboro;" id="new_tablet_address"></code></p>
 
+    </fieldset>
+
+    <fieldset>
+            <legend><h1>Show your tablets</h1></legend>
+            
+            Choose desired addres in MetaMask then click <br>
+            <input type="button" value="show my tablets" onclick="show_tablets()"></p>
+    
+            <p id="my_tablets"></p>
+    
     </fieldset>
 
 </body>
