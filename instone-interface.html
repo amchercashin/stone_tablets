@@ -170,7 +170,7 @@
                         console.log("records_count " + records_count)
 
                         var r;
-                        for (r = 0; r < tablets_count; r++) {
+                        for (r = 0; r < records_count; r++) {
                             console.log(r);
                             tablet_instance.records.call(r, function call_records(error, record) {
                                 if (!error) {
