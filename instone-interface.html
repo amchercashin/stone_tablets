@@ -122,7 +122,7 @@
                                 <th>Address</th>
                             </tr>                        
                         `
-                        console.log("creator_tablets_count called")
+                        console.log("tablets_count "+tablets_count)
                         for (t=0; t==tablets_count-1; t++) {
                             console.log(t);
                             tablet_factory_instance.tablets.call(creator_address, t, function(error, tablet) {
