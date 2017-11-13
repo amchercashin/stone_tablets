@@ -111,7 +111,7 @@
             var creator_address = web3.eth.accounts[0];
             var tablet_factory_instance = get_tablet_factory_instance();
              
-            tablet_factory_instance.creator_tablets_count.call({},
+            tablet_factory_instance.creator_tablets_count.call(
                 function(error, tablets_count){
                     if (!error) {
                         var my_tablets_table_html = 
