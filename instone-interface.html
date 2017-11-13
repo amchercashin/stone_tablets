@@ -126,6 +126,7 @@
                         for (t=0; t==tablets_count-1; t++) {
                             tablet_factory_instance.tablets.call({creator_address, t}, function(error, tablet) {
                                 if (!error) {
+                                    console.log(tablet);
                                     var new_tablet_html = `
                                     <tr>
                                         <td>` + tablet[0] `</td>
