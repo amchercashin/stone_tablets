@@ -1,18 +1,20 @@
 pragma solidity ^0.4.16;
 contract tablet {
-
+    
+    bytes32 public this_tablet_name;
     string[] public records;
     address public tablet_owner;
     mapping(address => bool) public scribes;
     
-    event new_tablet_created(address indexed tablet_creator, address tablet_address);
+    event new_tablet_created(address indexed tablet_creator, bytes32 tablet_name, address tablet_address);
     event new_record(address indexed tablet_address, address indexed scribe, uint record_nubmer);
     
-    function tablet(address tablet_creator) public {
+    function tablet(bytes32 tablet_name, address tablet_creator) public {
         if (tablet_creator == 0) tablet_creator = msg.sender;
         tablet_owner = tablet_creator;
+        this_tablet_name = tablet_name;
         scribes[tablet_owner] = true;
-        new_tablet_created(tablet_creator, this);
+        new_tablet_created(tablet_creator, tablet_name, this);
     }
 
     function add_scribe(address scribe) public {
