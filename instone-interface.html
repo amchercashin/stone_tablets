@@ -34,6 +34,7 @@
 
         function make_table() {
             var tablet_factory_instance = get_tablet_factory_instance();
+            console.log(tablet_factory_instance);
             var new_tablet_calculated_address;
             tablet_factory_instance.create_tablet.call({},
                 function(error, result){
