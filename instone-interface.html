@@ -126,24 +126,26 @@
                         console.log("tablets_count "+tablets_count)
                         var t;
                         for (t = 0; t < tablets_count; t++) {
-                            console.log(t);
-                            tablet_factory_instance.tablets.call(creator_address, t, function(error, tablet) {
-                                if (!error) {
-                                    console.log(tablet);
-                                    var new_tablet_html = `
-                                    <tr>
-                                        <td>` + t+1 + `</td>
-                                        <td>` + web3.toAscii(tablet[0]) + `</td>
-                                        <td>` + tablet[1] + `</td>
-                                    </tr>
-                                    `
-                                    my_tablets_table_html = my_tablets_table_html + new_tablet_html;
-                                    document.getElementById("my_tablets").innerHTML = my_tablets_table_html + " </table>";
-                                }
-                                else {
-                                    console.log(error);
-                                }
-                            });
+                            (function (t) {
+                                console.log(t);
+                                tablet_factory_instance.tablets.call(creator_address, t, function(error, tablet) {
+                                    if (!error) {
+                                        console.log(tablet);
+                                        var new_tablet_html = `
+                                        <tr>
+                                            <td>` + parseInt(t) + parseInt(1) + `</td>
+                                            <td>` + web3.toAscii(tablet[0]) + `</td>
+                                            <td>` + tablet[1] + `</td>
+                                        </tr>
+                                        `
+                                        my_tablets_table_html = my_tablets_table_html + new_tablet_html;
+                                        document.getElementById("my_tablets").innerHTML = my_tablets_table_html + " </table>";
+                                    }
+                                    else {
+                                        console.log(error);
+                                    }
+                                });
+                            })(r);
                         }
                         
                     } else {
@@ -178,7 +180,7 @@
                                         console.log(record);
                                         var new_record_html = `
                                         <tr>
-                                            <td>` + parseInt(r) + 1 + `</td>
+                                            <td>` + parseInt(r) + parseInt(1) + `</td>
                                             <td>` + record + `</td>
                                         </tr>
                                         `
