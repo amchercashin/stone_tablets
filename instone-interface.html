@@ -133,7 +133,7 @@
                                         console.log(tablet);
                                         var new_tablet_html = `
                                         <tr>
-                                            <td>` + parseInt(t) + parseInt(1) + `</td>
+                                            <td>` + eval(t + 1) + `</td>
                                             <td>` + web3.toAscii(tablet[0]) + `</td>
                                             <td>` + tablet[1] + `</td>
                                         </tr>
@@ -180,7 +180,7 @@
                                         console.log(record);
                                         var new_record_html = `
                                         <tr>
-                                            <td>` + parseInt(r) + parseInt(1) + `</td>
+                                            <td>` + eval(r + 1) + `</td>
                                             <td>` + record + `</td>
                                         </tr>
                                         `
