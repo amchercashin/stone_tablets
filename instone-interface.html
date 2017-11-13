@@ -123,6 +123,7 @@
                             </tr>                        
                         `
                         console.log("tablets_count "+tablets_count)
+                        var t = 0;
                         for (t=0; t==tablets_count-1; t++) {
                             console.log(t);
                             tablet_factory_instance.tablets.call(creator_address, t, function(error, tablet) {
