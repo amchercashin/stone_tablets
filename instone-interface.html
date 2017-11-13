@@ -36,7 +36,8 @@
             var tablet_factory_instance = get_tablet_factory_instance();
             console.log(tablet_factory_instance);
             var new_tablet_calculated_address;
-            tablet_factory_instance.create_tablet.call({},
+            var desired_tablet_name = document.getElementById("desired_tablet_name").value
+            tablet_factory_instance.create_tablet.call({desired_tablet_name},
                 function(error, result){
                     if(!error) {                    
                         new_tablet_calculated_address = result;
@@ -47,7 +48,7 @@
                                 if(!error) {
                                     var creator_tablets_count = result;
                                     console.log("creator_tablets_count: " + creator_tablets_count);
-                                    tablet_factory_instance.create_tablet({from:web3.eth.accounts[0], to:tablet_factory, value:"", gas:850000, gasPrice:"4000000000"},
+                                    tablet_factory_instance.create_tablet({desired_tablet_name}, {from:web3.eth.accounts[0], to:tablet_factory, value:"", gas:850000, gasPrice:"4000000000"},
                                         function(error, result){
                                             if(!error) {
                                                 document.getElementById("new_tablet_address").innerHTML = "pending table creation";
@@ -154,10 +155,13 @@
         <legend><h1>Make new stone tablet</h1></legend>
         
         Input tablet factory address: <br>
-        <input type="text" size="42" id="tablet_factory"></input>
+        <input type="text" size="42" id="tablet_factory"></input> 
+        
+        <p>Desired tablet name:<br>
+        <input id="desired_tablet_name" type="text" maxlength=32 size=32 pattern="^[0-9a-fA-F]$">
         <input type="button" value="create tablet" onclick="make_table()"></p>
 
-        <p>Tablet address: <code style="background-color:gainsboro;" id="new_tablet_address"></code></p>
+        <p>Tablet address:<br><code style="background-color:gainsboro;" id="new_tablet_address"></code></p>
 
     </fieldset>
 
