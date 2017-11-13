@@ -118,6 +118,7 @@
                         `
                         <table>
                             <tr>
+                                <th>№</th>
                                 <th>Name</th>
                                 <th>Address</th>
                             </tr>                        
@@ -131,6 +132,7 @@
                                     console.log(tablet);
                                     var new_tablet_html = `
                                     <tr>
+                                        <td>` + t+1 + `</td>
                                         <td>` + web3.toAscii(tablet[0]) + `</td>
                                         <td>` + tablet[1] + `</td>
                                     </tr>
@@ -141,7 +143,7 @@
                                 else {
                                     console.log(error);
                                 }
-                            })                           
+                            });
                         }
                         
                     } else {
@@ -149,6 +151,54 @@
                     }
                 }
             );
+        }
+
+        function show_records(tablet_address) {
+            var tablet_instance = get_tablet_instance(tablet_address);
+            console.log(tablet_instance);
+            tablet_instance.tablet_length.call(function call_records_count(error, records_count) {
+                if (!error) {
+                    var records_table_html = 
+                        `
+                        <table>
+                            <tr>
+                                <th>№</th>
+                                <th>Record</th>
+                            </tr>                        
+                        `
+                        console.log("records_count " + records_count)
+
+                        var r;
+                        for (r = 0; r < tablets_count; r++) {
+                            console.log(r);
+                            tablet_instance.records.call(r, function call_records(error, record) {
+                                if (!error) {
+                                    console.log(record);
+                                    var new_record_html = `
+                                    <tr>
+                                        <td>` + t+1 + `</td>
+                                        <td>` + record + `</td>
+                                    </tr>
+                                    `
+                                    records_table_html = records_table_html + new_record_html;
+                                    document.getElementById("my_records").innerHTML = records_table_html + " </table>";
+                                }
+                                else {
+                                    console.log(error);
+                                }
+                            });
+                        }
+                } else {
+                    console.log(error);
+                }
+            }
+            );
+        }
+
+        function get_tablet_instance(tablet_address) {
+            var tablet_ABI = [{"constant":false,"inputs":[{"name":"record","type":"string"}],"name":"add_record","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"new_owner","type":"address"}],"name":"change_owner","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"scribe","type":"address"}],"name":"remove_scribe","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"records","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"tablet_owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"scribe","type":"address"}],"name":"add_scribe","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"this_tablet_name","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"tablet_length","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"scribes","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"tablet_name","type":"bytes32"},{"name":"tablet_creator","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tablet_creator","type":"address"},{"indexed":false,"name":"tablet_name","type":"bytes32"},{"indexed":false,"name":"tablet_address","type":"address"}],"name":"new_tablet_created","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tablet_address","type":"address"},{"indexed":true,"name":"scribe","type":"address"},{"indexed":false,"name":"record_nubmer","type":"uint256"}],"name":"new_record","type":"event"}];
+            var tablet = web3.eth.contract(tablet_ABI);
+            return tablet.at(tablet_address);
         }
     </script>
 </head>
@@ -183,8 +233,8 @@
             
             Input tablet factory address: <br>
             <input type="text" size="42" id="tablet" value="" maxlength=42></input>
-            <input type="button" value="show all records" onclick="show_records()"></p>
-            
+            <input type="button" value="show all records" onclick="show_records(this.value)"></p>
+
             <p id="my_records"></p>
     
     </fieldset>
