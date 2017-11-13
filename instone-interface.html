@@ -110,7 +110,7 @@
         function show_tablets() {
             var creator_address = web3.eth.accounts[0];
             var tablet_factory_instance = get_tablet_factory_instance();
-             
+             console.log(tablet_factory_instance);
             tablet_factory_instance.creator_tablets_count.call(creator_address,
                 function(error, tablets_count){
                     if (!error) {
@@ -124,6 +124,7 @@
                         `
 
                         for (t=0; t==tablets_count-1; t++) {
+                            console.log(t);
                             tablet_factory_instance.tablets.call(creator_address, t, function(error, tablet) {
                                 if (!error) {
                                     console.log(tablet);
