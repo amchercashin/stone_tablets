@@ -170,24 +170,27 @@
                         console.log("records_count " + records_count)
 
                         var r;
+                        var r_;
                         for (r = 0; r < records_count; r++) {
-                            console.log(r);
-                            tablet_instance.records.call(r, function call_records(error, record) {
-                                if (!error) {
-                                    console.log(record);
-                                    var new_record_html = `
-                                    <tr>
-                                        <td>` + r + 1 + `</td>
-                                        <td>` + record + `</td>
-                                    </tr>
-                                    `
-                                    records_table_html = records_table_html + new_record_html;
-                                    document.getElementById("my_records").innerHTML = records_table_html + " </table>";
-                                }
-                                else {
-                                    console.log(error);
-                                }
-                            });
+                            (function (r) {
+                                console.log(r);
+                                tablet_instance.records.call(r, function call_records(error, record) {
+                                    if (!error) {
+                                        console.log(record);
+                                        var new_record_html = `
+                                        <tr>
+                                            <td>` + r + 1 + `</td>
+                                            <td>` + record + `</td>
+                                        </tr>
+                                        `
+                                        records_table_html = records_table_html + new_record_html;
+                                        document.getElementById("my_records").innerHTML = records_table_html + " </table>";
+                                    }
+                                    else {
+                                        console.log(error);
+                                    }
+                                });
+                            })(r);
                         }
                 } else {
                     console.log(error);
