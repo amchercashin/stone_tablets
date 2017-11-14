@@ -18,7 +18,7 @@ function show_tablets() {
                 var t;
                 var retrieved_tables_count;
                 for (t = 0; t < tablets_count; t++) {
-                    (function (t) {
+                    (function (t, retrieved_tables_count) {
                         console.log(t);
                         tablet_factory_instance.tablets.call(creator_address, t, function(error, tablet) {
                             if (!error) {
@@ -43,7 +43,7 @@ function show_tablets() {
                                 console.log(error);
                             }
                         });
-                    })(t);                           
+                    })(t, retrieved_tables_count);                           
                 }                        
             } else {
                 console.error(error);
