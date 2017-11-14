@@ -147,6 +147,7 @@
                                 });
                             })(t);                            
                         }
+                        console.log("calling sort");
                         sort_table(document.getElementById("tablets_table"));
                         
                     } else {
@@ -235,6 +236,7 @@
         }
 
         function sort_table(table) {
+            console.log("sort is called");
             var tbl = table.tBodies[0];
             var store = [];
             for(var i=0, len=tbl.rows.length; i<len; i++){
