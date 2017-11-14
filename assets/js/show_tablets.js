@@ -11,7 +11,7 @@ function show_tablets() {
                     <tr>
                         <th class="row-1 row-ID">№</th>
                         <th class="row-2 row-name">Name</th>
-                        <th class="row-2 row-text">Address</th>
+                        <th class="row-2 row-address">Address</th>
                     </tr>                        
                 `
                 console.log("tablets_count "+tablets_count)
