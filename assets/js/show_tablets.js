@@ -43,7 +43,7 @@ function show_tablets() {
                                 console.log(error);
                             }
                         });
-                    })();                           
+                    })(t);                           
                 }                        
             } else {
                 console.error(error);
