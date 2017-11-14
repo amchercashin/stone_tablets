@@ -140,16 +140,17 @@
                                         `
                                         my_tablets_table_html = my_tablets_table_html + new_tablet_html;
                                         document.getElementById("my_tablets").innerHTML = my_tablets_table_html + " </table>";
+                                        if (t == tablets_count - 1) {
+                                            console.log("calling sort");
+                                            sort_table(document.getElementById("tablets_table"));
+                                        }
                                     }
                                     else {
                                         console.log(error);
                                     }
                                 });
                             })(t);                            
-                        }
-                        console.log("calling sort");
-                        sort_table(document.getElementById("tablets_table"));
-                        
+                        }                        
                     } else {
                         console.error(error);
                     }
