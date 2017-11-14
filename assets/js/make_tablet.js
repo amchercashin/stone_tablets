@@ -1,4 +1,4 @@
-function make_table() {
+function make_tablet() {
     var tablet_factory_instance = get_tablet_factory_instance();
     console.log(tablet_factory_instance);
     var new_tablet_calculated_address;

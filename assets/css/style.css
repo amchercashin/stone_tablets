@@ -12,3 +12,14 @@
 80% {opacity:0.7;}
 100% {opacity:0.3;}
 }
+
+.wallet_link {
+    cursor:pointer;
+    color:blue;
+    text-decoration:underline;
+}
+
+.wallet_link:hover {
+    text-decoration:none;
+    text-shadow: 1px 1px 1px #555;
+}
