@@ -116,7 +116,7 @@
                     if (!error) {
                         var my_tablets_table_html = 
                         `
-                        <table>
+                        <table id="tablets_table">
                             <tr>
                                 <th>№</th>
                                 <th>Name</th>
@@ -146,6 +146,7 @@
                                     }
                                 });
                             })(t);
+                            sort_table(document.getElementById("tablets_table"));
                         }
                         
                     } else {
@@ -231,6 +232,23 @@
                 bytes_limit = `<font color="red">` + bytes_limit + `</font>`;
             }
             return document.getElementById("bytes_limit").innerHTML = bytes_limit;
+        }
+
+        function sort_table(table) {
+            var tbl = table.tBodies[0];
+            var store = [];
+            for(var i=0, len=tbl.rows.length; i<len; i++){
+                var row = tbl.rows[i];
+                var sortnr = parseFloat(row.cells[0].textContent || row.cells[0].innerText);
+                if(!isNaN(sortnr)) store.push([sortnr, row]);
+            }
+            store.sort(function(x,y){
+                return x[0] - y[0];
+            });
+            for(var i=0, len=store.length; i<len; i++){
+                tbl.appendChild(store[i][1]);
+            }
+            store = null;
         }
     </script>
 </head>
