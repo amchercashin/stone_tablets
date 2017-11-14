@@ -16,6 +16,7 @@ function show_tablets() {
                 `
                 console.log("tablets_count "+tablets_count)
                 var t;
+                var retrieved_tables_count;
                 for (t = 0; t < tablets_count; t++) {
                     (function (t) {
                         console.log(t);
@@ -31,7 +32,8 @@ function show_tablets() {
                                 `
                                 my_tablets_table_html = my_tablets_table_html + new_tablet_html;
                                 document.getElementById("my_tablets").innerHTML = my_tablets_table_html + " </table>";
-                                if (t == tablets_count - 1) {
+                                retrieved_tables_count = retrieved_tables_count + 1;
+                                if (retrieved_tables_count == tablets_count) {
                                     console.log("calling sort");
                                     sort_table(document.getElementById("tablets_table"));
                                 }
@@ -40,7 +42,7 @@ function show_tablets() {
                                 console.log(error);
                             }
                         });
-                    })(t);                            
+                    })(t);                           
                 }                        
             } else {
                 console.error(error);

@@ -15,6 +15,7 @@ function show_records() {
                 console.log("records_count " + records_count)
 
                 var r;
+                var retrieved_records_count;
                 for (r = 0; r < records_count; r++) {
                     (function (r) {
                         console.log(r);
@@ -29,7 +30,9 @@ function show_records() {
                                 `
                                 records_table_html = records_table_html + new_record_html;
                                 document.getElementById("my_records").innerHTML = records_table_html + " </table>";
-                                if (r == records_count - 1) {
+                                retrieved_records_count = retrieved_records_count + 1;
+                                if (retrieved_records_count == records_count) {
+                                    console.log("calling sort");
                                     sort_table(document.getElementById("records_table"));
                                 }
                             }
