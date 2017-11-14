@@ -166,7 +166,7 @@
                 if (!error) {
                     var records_table_html = 
                         `
-                        <table>
+                        <table id="records_table">
                             <tr>
                                 <th>№</th>
                                 <th>Record</th>
@@ -189,6 +189,9 @@
                                         `
                                         records_table_html = records_table_html + new_record_html;
                                         document.getElementById("my_records").innerHTML = records_table_html + " </table>";
+                                        if (r == records_count - 1) {
+                                            sort_table(document.getElementById("records_table"));
+                                        }
                                     }
                                     else {
                                         console.log(error);
