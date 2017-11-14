@@ -1,5 +1,5 @@
 function show_records() {
-    document.getElementById("my_records").innerHTML
+    document.getElementById("my_records").innerHTML = "";
     var tablet_address = document.getElementById("tablet").value;
     var tablet_instance = get_tablet_instance(tablet_address);
     console.log(tablet_instance);
