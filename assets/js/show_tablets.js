@@ -1,4 +1,5 @@
 function show_tablets() {
+    document.getElementById("my_tablets").innerHTML = "";
     var creator_address = web3.eth.accounts[0];
     var tablet_factory_instance = get_tablet_factory_instance();
      console.log(tablet_factory_instance);
