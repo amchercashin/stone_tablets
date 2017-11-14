@@ -25,10 +25,11 @@
 }
 
 table {
-    table-layout:fixed;
+    table-layout: fixed;
+    width: 100%;
 }
 
 td {
-    word-wrap:normal;
-    white-space:pre;
+    word-wrap: normal;
+    white-space: pre;
 }
