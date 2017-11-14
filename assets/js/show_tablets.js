@@ -27,7 +27,7 @@ function show_tablets() {
                                 <tr>
                                     <td>` + eval(t + 1) + `</td>
                                     <td>` + web3.toAscii(tablet[0]) + `</td>
-                                    <td class="wallet_link">` + tablet[1] + `</td>
+                                    <td class="wallet_link" onclick="wallet_address_click(this)">` + tablet[1] + `</td>
                                 </tr>
                                 `
                                 my_tablets_table_html = my_tablets_table_html + new_tablet_html;
