@@ -29,6 +29,6 @@ table {
 }
 
 td {
-    word-wrap:break-word;
+    word-wrap:normal;
     white-space:pre;
 }
