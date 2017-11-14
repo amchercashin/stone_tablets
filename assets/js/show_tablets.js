@@ -16,9 +16,10 @@ function show_tablets() {
                 `
                 console.log("tablets_count "+tablets_count)
                 var t;
-                var retrieved_tables_count = 0;
+                
                 for (t = 0; t < tablets_count; t++) {
-                    (function (t, retrieved_tables_count) {
+                    (function (t) {
+                        var retrieved_tables_count = 0;
                         console.log(t);
                         tablet_factory_instance.tablets.call(creator_address, t, function(error, tablet) {
                             if (!error) {
@@ -43,7 +44,7 @@ function show_tablets() {
                                 console.log(error);
                             }
                         });
-                    })(t, retrieved_tables_count);                           
+                    })(t);                           
                 }                        
             } else {
                 console.error(error);
