@@ -14,7 +14,7 @@ function make_tablet() {
                         if(!error) {
                             var creator_tablets_count = result;
                             console.log("creator_tablets_count: " + creator_tablets_count);
-                            tablet_factory_instance.create_tablet(desired_tablet_name, {from:web3.eth.accounts[0], to:tablet_factory, value:"", gas:850000, gasPrice:"4000000000"},
+                            tablet_factory_instance.create_tablet(desired_tablet_name, {from:web3.eth.accounts[0], to:tablet_factory, value:""},
                                 function(error, result){
                                     if(!error) {
                                         document.getElementById("new_tablet_address").innerHTML = "pending table creation";
