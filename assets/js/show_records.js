@@ -15,7 +15,7 @@ function show_records() {
                 console.log("records_count " + records_count)
 
                 var r;
-                var retrieved_records_count;
+                var retrieved_records_count = 0;
                 for (r = 0; r < records_count; r++) {
                     (function (r) {
                         console.log(r);
