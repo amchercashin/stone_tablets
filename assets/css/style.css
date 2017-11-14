@@ -26,11 +26,23 @@
 
 table {
     table-layout: fixed;
-    width: 80%;
+    width: 100%;
     word-wrap: break-word;
 }
 
 td {
     word-wrap: break-word;
     white-space: pre-wrap;
+}
+
+.row-ID {
+    width: 10%;
+}
+
+.row-name {
+    width: 30%;
+}
+
+.row-text {
+    width: 60%;
 }
