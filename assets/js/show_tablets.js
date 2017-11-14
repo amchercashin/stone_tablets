@@ -33,7 +33,7 @@ function show_tablets() {
                                 my_tablets_table_html = my_tablets_table_html + new_tablet_html;
                                 document.getElementById("my_tablets").innerHTML = my_tablets_table_html + " </table>";
                                 retrieved_tables_count = retrieved_tables_count + 1;
-                                console.log(retrieved_tables_count);
+                                console.log("retrieved_tables_count: " + retrieved_tables_count);
                                 if (retrieved_tables_count == tablets_count) {
                                     console.log("calling sort");
                                     sort_table(document.getElementById("tablets_table"));
