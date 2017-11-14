@@ -201,17 +201,21 @@
         }
 
         function add_record() {
-            var tablet_address = document.getElementById("tablet").value;
-            var tablet_instance = get_tablet_instance(tablet_address);
-            tablet_instance.add_record(document.getElementById("record_to_add").value, {from:web3.eth.accounts[0], to:tablet_factory, value:"", gas:850000, gasPrice:"4000000000"},
-                function add_record(error, record_tx) {
-                    if (!error) {
-                        console.log(record_tx);
-                    } else {
-                        console.log(error);
+            if (Number(2048 - (new Blob([document.getElementById("record_to_add").value])).size) < 0) {
+                var tablet_address = document.getElementById("tablet").value;
+                var tablet_instance = get_tablet_instance(tablet_address);
+                tablet_instance.add_record(document.getElementById("record_to_add").value, {from:web3.eth.accounts[0], to:tablet_factory, value:"", gas:850000, gasPrice:"4000000000"},
+                    function add_record(error, record_tx) {
+                        if (!error) {
+                            console.log(record_tx);
+                        } else {
+                            console.log(error);
+                        }
                     }
-                }
-            );
+                );
+            } else {
+                return false;
+            }
         }
 
 
@@ -219,6 +223,11 @@
             var tablet_ABI = [{"constant":false,"inputs":[{"name":"record","type":"string"}],"name":"add_record","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"new_owner","type":"address"}],"name":"change_owner","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"scribe","type":"address"}],"name":"remove_scribe","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"records","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"tablet_owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"scribe","type":"address"}],"name":"add_scribe","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"this_tablet_name","outputs":[{"name":"","type":"bytes32"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"tablet_length","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"scribes","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[{"name":"tablet_name","type":"bytes32"},{"name":"tablet_creator","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tablet_creator","type":"address"},{"indexed":false,"name":"tablet_name","type":"bytes32"},{"indexed":false,"name":"tablet_address","type":"address"}],"name":"new_tablet_created","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tablet_address","type":"address"},{"indexed":true,"name":"scribe","type":"address"},{"indexed":false,"name":"record_nubmer","type":"uint256"}],"name":"new_record","type":"event"}];
             var tablet = web3.eth.contract(tablet_ABI);
             return tablet.at(tablet_address);
+        }
+
+        function update_bytes_limit () {
+            var bytes_limit = Number(2048 - (new Blob([document.getElementById("record_to_add").value])).size);
+            return document.getElementById("bytes_limit").innerHTML = bytes_limit;
         }
     </script>
 </head>
@@ -256,8 +265,8 @@
             <input type="button" value="show all records" onclick="show_records()"></p>
 
             <p id="my_records"></p>
-
-            <textarea id="record_to_add" cols="40" rows="5"></textarea>
+            You have <strong id="bytes_limit">2048</strong> bytes left <br>
+            <textarea id="record_to_add" cols="40" rows="5" oninput="update_bytes_limit()"></textarea>
             <input type="button" value="add_record" onclick="add_record()"></p>
 
     </fieldset>
