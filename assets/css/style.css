@@ -30,6 +30,6 @@ table {
 }
 
 td {
-    word-wrap: normal;
+    word-wrap: break-word;
     white-space: pre;
 }
