@@ -30,9 +30,10 @@ table {
     word-wrap: break-word;
 }
 
-td {
+th, td {
     word-wrap: break-word;
     white-space: pre-wrap;
+    padding: 5px 10px;
 }
 
 .row-ID {
