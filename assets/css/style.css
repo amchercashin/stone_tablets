@@ -23,3 +23,11 @@
     text-decoration:none;
     text-shadow: 1px 1px 1px #555;
 }
+
+table {
+    table-layout: fixed;
+}
+
+td {
+    word-wrap:break-word
+}
