@@ -9,7 +9,7 @@ function show_records() {
                 <table id="records_table">
                     <tr>
                         <th class="row-1 row-ID">№</th>
-                        <th class="row-2 row-text>Record</th>
+                        <th class="row-2 row-text">Record</th>
                     </tr>                        
                 `
                 console.log("records_count " + records_count)
