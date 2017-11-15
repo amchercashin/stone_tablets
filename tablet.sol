@@ -38,7 +38,7 @@ contract tablet {
         new_record(this, msg.sender, records.push(record));
     }
     
-    function tablet_length () public constant returns (uint256) {
+    function tablet_length() public constant returns (uint256) {
         return records.length;
     }
 }
