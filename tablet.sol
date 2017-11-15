@@ -10,7 +10,7 @@ contract tablet {
     event new_record(address indexed tablet_address, address indexed scribe, uint record_nubmer);
     
     function tablet(bytes32 tablet_name, address tablet_creator) public {
-        if (tablet_creator == 0) tablet_creator = msg.sender;
+        if (tablet_creator == 0) {tablet_creator = msg.sender;}
         tablet_owner = tablet_creator;
         this_tablet_name = tablet_name;
         scribes[tablet_owner] = true;
