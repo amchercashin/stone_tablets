@@ -38,9 +38,12 @@ contract tablet {
         new_record(this, msg.sender, records.push(record));
     }
     
-    function tablet_length () public constant returns (uint256) {
-        return records.length;
+
+    
+    function get_all_records() public constant returns (string[]) {
+        return records;
     }
+    
     /*
     function get_record(uint256 from_position) public constant returns (string) {
         require(records.length > 0);
@@ -56,11 +59,9 @@ contract tablet {
 
     }
     */
-    /*
-    function get_all() private constant returns (string[]) {
-        return records;
-    }
-    */
+    
+
+    
     
     /*
     function get_all2() public constant returns (byte[2048][]) {
