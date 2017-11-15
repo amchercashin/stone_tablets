@@ -1,6 +1,3 @@
-
-
-
 function MetaMask_check() {
     if (typeof web3.eth.accounts[0] == 'undefined') {
         document.getElementById("MetaMask_warning").innerHTML = 
