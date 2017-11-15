@@ -1,4 +1,5 @@
 function add_record() {
+    MetaMask_check();
     if (Number(2048 - (new Blob([document.getElementById("record_to_add").value])).size) >= 0) {
         var tablet_address = document.getElementById("tablet").value;
         var tablet_instance = get_tablet_instance(tablet_address);

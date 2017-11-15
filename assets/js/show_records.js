@@ -1,4 +1,5 @@
 function show_records() {
+    MetaMask_check();
     document.getElementById("my_records").innerHTML = "";
     var tablet_address = document.getElementById("tablet").value;
     var tablet_instance = get_tablet_instance(tablet_address);
