@@ -3,6 +3,10 @@
 
 @import "{{ site.theme }}";
 
+section {
+    width:800px;
+  }
+
 .pending {
     -webkit-animation: pending 2s infinite;
 }
