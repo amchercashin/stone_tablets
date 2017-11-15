@@ -1,0 +1,53 @@
+<html>
+        <head>
+            <script src="assets/js/MetaMask_check.js"></script>
+            <script src="assets/js/add_record.js"></script>
+            <script src="assets/js/get_tablet_factory_instance.js"></script>
+            <script src="assets/js/get_tablet_instance.js"></script>
+            <script src="assets/js/make_tablet.js"></script>
+            <script src="assets/js/show_records.js"></script>
+            <script src="assets/js/show_tablets.js"></script>
+            <script src="assets/js/sort_table.js"></script>
+            <script src="assets/js/tablet_is_created.js"></script>
+            <script src="assets/js/update_bytes_limit.js"></script>
+            <script src="assets/js/wallet_address_click.js"></script>    
+        
+            <script>        
+                window.addEventListener('load', function MetaMask_load() {
+        
+            // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+            if (typeof web3 !== 'undefined') {
+                // Use Mist/MetaMask's provider
+                window.web3 = new Web3(web3.currentProvider);
+            } else {
+                //console.log('No web3? You should consider trying MetaMask!')
+                // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
+                //window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+                document.getElementById("MetaMask_warning").innerHTML = 
+                `
+                <p><strong>Warning</strong> Install MetaMask Chrome addon and connect to your account.</p>
+                `
+            }      
+        })
+            </script>
+        </head>
+        
+        <body>
+            <div id="MetaMask_warning"></div>
+
+            <fieldset>
+                    <legend><h1>Tablet records</h1></legend>
+                    
+                    Input tablet factory address: <br>
+                    <input type="text" size="42" id="tablet" value="" maxlength=42></input>
+                    <input type="button" value="show all records" onclick="show_records()"></p>
+        
+                    <p id="my_records"></p>
+                    You have <strong id="bytes_limit">2048</strong> bytes left <br>
+                    <textarea id="record_to_add" cols="40" rows="5" oninput="update_bytes_limit()"></textarea>
+                    <input type="button" value="add_record" onclick="add_record()"></p>
+        
+            </fieldset>
+        
+        </body>
+        </html>
