@@ -16,7 +16,8 @@ title: Littera scripta manet
     <script src="assets/js/sort_table.js"></script>
     <script src="assets/js/tablet_is_created.js"></script>
     <script src="assets/js/update_bytes_limit.js"></script>
-    <script src="assets/js/wallet_address_click.js"></script>    
+    <script src="assets/js/wallet_address_click.js"></script>
+    <script src="assets/js/get_owner.js"></script>
 
     <script>        
         window.addEventListener('load', function MetaMask_load() {
@@ -108,7 +109,7 @@ title: Littera scripta manet
             <legend><h3 style="color:red;">DANGER ZONE! Transfer ownership</h3></legend>
             Transfer tablet ownership to address: <br>
             <input type="text" size="42" id="transfer_ownership_address" value="" maxlength=42></input>
-            <input type="button" value="transfer" onclick="transfer_ownership()"></p>
+            <input type="button" value="transfer" onclick="transfer_ownership()" style="color:red;"></p>
             <p id="transfer_ownership_result"></p>
         </fieldset>
 </fieldset>
