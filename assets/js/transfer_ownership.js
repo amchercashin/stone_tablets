@@ -14,8 +14,13 @@ function transfer_ownership() {
                             if(!error) {
                                 console.log("receipt: " + receipt);
                                 if (receipt) {
-                                    document.getElementById("transfer_ownership_result").innerHTML = "ownership has been transferred!";
-                                    document.getElementById("transfer_ownership_result").className = "";
+                                    if (receipt.status) {
+                                        document.getElementById("transfer_ownership_result").innerHTML = "ownership has been transferred!";
+                                        document.getElementById("transfer_ownership_result").className = "";
+                                    } else {
+                                        document.getElementById("transfer_ownership_result").innerHTML = "transaction error, check it on Etherscan";
+                                        document.getElementById("transfer_ownership_result").className = "";
+                                    }
                                     clearInterval(record_listener);
                                 }
                             } else {

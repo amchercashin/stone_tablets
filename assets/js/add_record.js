@@ -15,8 +15,13 @@ function add_record() {
                                 if(!error) {
                                     console.log("receipt: " + receipt);
                                     if (receipt) {
-                                        document.getElementById("add_record_result").innerHTML = "record has been added!";
-                                        document.getElementById("add_record_result").className = "";
+                                        if (receipt.status) {
+                                            document.getElementById("add_record_result").innerHTML = "record has been added!";
+                                            document.getElementById("add_record_result").className = "";
+                                        } else {
+                                            document.getElementById("add_record_result").innerHTML = "transaction error, check it on Etherscan";
+                                            document.getElementById("add_record_result").className = "";
+                                        }
                                         clearInterval(record_listener);
                                     }
                                 } else {
