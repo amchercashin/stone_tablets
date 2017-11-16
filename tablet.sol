@@ -17,6 +17,7 @@ contract tablet {
         tablet_owner = tablet_creator;
         this_tablet_name = tablet_name;
         scribes[tablet_owner] = true;
+        scribes_hisory.push(tablet_owner);
         new_tablet_created(tablet_creator, tablet_name, this);
     }
 
