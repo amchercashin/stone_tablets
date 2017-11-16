@@ -4,7 +4,7 @@ function tablet_is_created(tx_create_tablet, tablet_listener) {
             console.log("receipt: " + receipt);
             if (receipt) {
                 document.getElementById("new_tablet_address").innerHTML = receipt.logs[0].address;
-                document.getElementById("new_tablet_address").className = "";
+                document.getElementById("new_tablet_address").className = "wallet_link";
                 clearInterval(tablet_listener);
             }
         } else {
