@@ -3,7 +3,7 @@ function add_record() {
     if (Number(2048 - (new Blob([document.getElementById("record_to_add").value])).size) >= 0) {
         var tablet_address = document.getElementById("tablet").value;
         var tablet_instance = get_tablet_instance(tablet_address);
-        tablet_instance.add_record(document.getElementById("record_to_add").value, {to:tablet_instance, value:""},
+        tablet_instance.add_record(document.getElementById("record_to_add").value, {from:web3.eth.accounts[0], to:tablet_instance, value:""},
             function add_record_call(error, tx_record) {
                 if (!error) {
                     document.getElementById("add_record_result").innerHTML = "pending record add";
