@@ -1,10 +1,9 @@
-function tablet_is_created(tablet_factory_instance, creator, tablet_address, tablet_n, is_created, tablet_listener) {
-    tablet_factory_instance.tablets.call(creator, tablet_n, function(error, result) {
+function tablet_is_created(tx_create_tablet, tablet_listener) {
+    web3.eth.getTransactionReceipt(tx_create_tablet, function(error, receipt) {
         if(!error) {
-            console.log("tablet_address: " + tablet_address + "/n" + "result: " + result[1]);
-            is_created = tablet_address == result[1];
-            if (is_created) {
-                document.getElementById("new_tablet_address").innerHTML = tablet_address;
+            console.log("receipt: " + receipt);
+            if (receipt.status) {
+                document.getElementById("new_tablet_address").innerHTML = result.logs[0].address;
                 document.getElementById("new_tablet_address").className = "";
                 clearInterval(tablet_listener);
             }
