@@ -5,7 +5,7 @@ function make_tablet() {
     var desired_tablet_name = document.getElementById("desired_tablet_name").value
     var tip = 0;
     if (document.getElementById("tip").checked) {
-        tip = document.getElementById("tip_value").value;
+        tip = document.getElementById("tip_value").value * 10^18;
     }
     tablet_factory_instance.create_tablet(desired_tablet_name, {from:web3.eth.accounts[0], to:tablet_factory, value:tip},
         function(error, tx_create_tablet){
