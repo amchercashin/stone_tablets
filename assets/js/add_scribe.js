@@ -14,8 +14,13 @@ function add_scribe() {
                             if(!error) {
                                 console.log("receipt: " + receipt);
                                 if (receipt) {
-                                    document.getElementById("add_scribe_result").innerHTML = "scribe has been added!";
-                                    document.getElementById("add_scribe_result").className = "";
+                                    if (receipt.status) {
+                                        document.getElementById("add_scribe_result").innerHTML = "scribe has been added!";
+                                        document.getElementById("add_scribe_result").className = "";
+                                    } else {
+                                        document.getElementById("add_scribe_result").innerHTML = "transaction error, check it on Etherscan";
+                                        document.getElementById("add_scribe_result").className = "";
+                                    }
                                     clearInterval(record_listener);
                                 }
                             } else {

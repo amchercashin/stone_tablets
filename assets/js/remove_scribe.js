@@ -14,8 +14,13 @@ function remove_scribe() {
                             if(!error) {
                                 console.log("receipt: " + receipt);
                                 if (receipt) {
-                                    document.getElementById("remove_scribe_result").innerHTML = "scribe has been removed!";
-                                    document.getElementById("remove_scribe_result").className = "";
+                                    if (receipt.status) {
+                                        document.getElementById("remove_scribe_result").innerHTML = "scribe has been removed!";
+                                        document.getElementById("remove_scribe_result").className = "";
+                                    } else {
+                                        document.getElementById("remove_scribe_result").innerHTML = "transaction error, check it on Etherscan";
+                                        document.getElementById("remove_scribe_result").className = "";
+                                    }
                                     clearInterval(record_listener);
                                 }
                             } else {
