@@ -2,9 +2,12 @@ pragma solidity ^0.4.16;
 contract tablet {
     
     bytes32 public this_tablet_name;
-    string[] public records;
     address public tablet_owner;
+    
+    string[] public records;
+    
     mapping(address => bool) public scribes;
+    address[] public scribes_hisory;
     
     event new_tablet_created(address indexed tablet_creator, bytes32 tablet_name, address tablet_address);
     event new_record(address indexed tablet_address, address indexed scribe, uint record_nubmer);
@@ -20,6 +23,7 @@ contract tablet {
     function add_scribe(address scribe) public {
         require(tablet_owner == msg.sender);
         scribes[scribe] = true;
+        scribes_hisory.push(scribe);
     }
     
     function remove_scribe(address scribe) public {
@@ -40,5 +44,9 @@ contract tablet {
     
     function tablet_length() public constant returns (uint256) {
         return records.length;
+    }
+    
+    function scribes_hisory_length() public constant returns (uint256) {
+        return scribes_hisory.length;
     }
 }
