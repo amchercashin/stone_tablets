@@ -14,8 +14,8 @@ function add_scribe() {
                             if(!error) {
                                 console.log("receipt: " + receipt);
                                 if (receipt) {
-                                    document.getElementById("new_tablet_address").innerHTML = "scribe has been added!";
-                                    document.getElementById("new_tablet_address").className = "";
+                                    document.getElementById("add_scribe_result").innerHTML = "scribe has been added!";
+                                    document.getElementById("add_scribe_result").className = "";
                                     clearInterval(record_listener);
                                 }
                             } else {
@@ -29,4 +29,4 @@ function add_scribe() {
             }
         }
     );
-    }
+}
