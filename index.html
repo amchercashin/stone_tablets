@@ -41,21 +41,23 @@ title: Littera scripta manet
 <body>
     <div id="MetaMask_warning"></div>
     <fieldset>
-        <legend><h1>Make new tablet</h1></legend>
+        <legend><h2>Make new tablet</h2></legend>
         
-        Input tablet factory address: <br>
+        Tablet factory address: <br>
         <input type="text" size="42" id="tablet_factory" value="0x7f6DBa2754AF1c2d2B8955E6AA71Ca19b65e2371"></input> 
         
-        <p>Desired tablet name:<br>
+        <p>Tablet name:<br>
         <input id="desired_tablet_name" type="text" maxlength=32 size=32 pattern="^[0-9a-fA-F]$">
-        <input type="button" value="create tablet" onclick="make_tablet()"></p>
-
+        <input type="button" value="create tablet" onclick="make_tablet()">
+        <input type="checkbox" id="tip" value="tip_me"> tip </input>
+        <input id="tip_value" type="number" min=0 value=0.01 step=0.01 style="width:50px;"> ETH</input>
+        </p>
         <p>Tablet address:<br><span id="new_tablet_address" class="wallet_link" onclick="wallet_address_click(this)"></span></p>
 
     </fieldset>
 
     <fieldset>
-            <legend><h1>Show your tablets</h1></legend>
+            <legend><h2>Show your tablets</h2></legend>
             
             Choose desired addres in MetaMask then click <input type="button" value="show my tablets" onclick="show_tablets()">
                 <input type="button" value="clear" onclick="document.getElementById('my_tablets').innerHTML = ''"></p>
@@ -65,9 +67,9 @@ title: Littera scripta manet
     </fieldset>
 
     <fieldset>
-            <legend><h1>Tablet records</h1></legend>
+            <legend><h2>Tablet records</h2></legend>
             
-            Input tablet address: <br>
+            Tablet address: <br>
             <input type="text" size="42" id="tablet" value="" maxlength=42></input>
             <input type="button" value="show all records" onclick="show_records()">
             <input type="button" value="clear" onclick="document.getElementById('my_records').innerHTML = ''"></p>
@@ -75,26 +77,39 @@ title: Littera scripta manet
             <p id="my_records"></p>
             You have <strong id="bytes_limit">2048</strong> bytes left <br>
             <textarea id="record_to_add" cols="80" rows="5" oninput="update_bytes_limit()"></textarea>
-            <input type="button" value="add_record" onclick="add_record()"></p>
+            <input type="button" value="add record" onclick="add_record()"></p>
             <p id="add_record_result"></p>
-
     </fieldset>
 
     <fieldset>
-        <legend>Tablet setting</legend>
+        <legend><h2>Tablet settings</h2></legend>
+        Tablet address: <br>
+        <input type="text" size="42" id="tablet" value="" maxlength=42></input>
+        <input type="button" value="show owner" onclick="show_owner()">
+        <p>Tablet owner: <span id="tablet_owner"></span> </p>
         <fieldset>
-            <legend><h2>Tablet scribes</h2></legend>
-            Input tablet address: <br>
-            <input type="text" size="42" id="tablet" value="" maxlength=42></input>
-            <input type="button" value="show all records" onclick="show_records()">
-            <input type="button" value="clear" onclick="document.getElementById('my_records').innerHTML = ''"></p>
+            <legend><h3>Tablet scribes</h3></legend>
+            
+            <input type="button" value="show scribes" onclick="show_scribes()">
+            <input type="button" value="clear" onclick="document.getElementById('scribes').innerHTML = ''"></p>
 
-            <p id="my_records"></p>
-            You have <strong id="bytes_limit">2048</strong> bytes left <br>
-            <textarea id="record_to_add" cols="80" rows="5" oninput="update_bytes_limit()"></textarea>
-            <input type="button" value="add_record" onclick="add_record()"></p>
-            <p id="add_record_result"></p>
-            </fieldset>
+            <p id="scribes"></p>
+            
+            <input type="text" size="42" id="add_scribe_address" value="" maxlength=42></input>
+            <input type="button" value="add scribe" onclick="add_scribe()"></p>
+            <p id="add_scribe_result"></p>
+
+            <input type="text" size="42" id="remove_scribe_address" value="" maxlength=42></input>
+            <input type="button" value="remove scribe" onclick="remove_scribe()"></p>
+            <p id="remove_scribe_result"></p>
+        </fieldset>
+        <fieldset style="border: 1px red solid;">
+            <legend><h3 style="color:red;">DANGER ZONE! Transfer ownership</h3></legend>
+            Transfer tablet ownership to address: <br>
+            <input type="text" size="42" id="transfer_ownership_address" value="" maxlength=42></input>
+            <input type="button" value="transfer" onclick="transfer_ownership()"></p>
+            <p id="transfer_ownership_result"></p>
+        </fieldset>
 </fieldset>
 
 </body>
