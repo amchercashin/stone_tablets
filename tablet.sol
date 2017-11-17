@@ -23,6 +23,7 @@ contract tablet {
 
     function add_scribe(address scribe) public {
         require(tablet_owner == msg.sender);
+        require(scribes[scribe] = false);
         scribes[scribe] = true;
         scribes_hisory.push(scribe);
     }
