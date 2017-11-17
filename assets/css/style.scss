@@ -21,6 +21,10 @@ header ul a {
     height:34px;
   }
 
+header ul a:hover {
+    cursor: default;
+   }
+
 .pending {
     -webkit-animation: pending 2s infinite;
 }
