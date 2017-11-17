@@ -15,6 +15,14 @@ header ul li + li + li + li {
     border-right: none;
     width: 89px;
     float: none;
+    vertical-align: middle;
+}
+
+header ul li + li + li {
+    border-right: none;
+    width: 89px;
+    float: none;
+    vertical-align: middle;
 }
 
 .pending {
