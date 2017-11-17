@@ -19,7 +19,7 @@ function remove_scribe() {
                                         document.getElementById("remove_scribe_result").className = "";
                                     } else {
                                         document.getElementById("remove_scribe_result").innerHTML = 
-                                        "transaction: <a href='https://etherscan.io/tx/'" + receipt.transactionHash + ">" +
+                                        "transaction: <a href='https://etherscan.io/tx/" + receipt.transactionHash + "'>" +
                                         receipt.transactionHash + "</a> failed!";
                                         document.getElementById("remove_scribe_result").className = "tx_error";
                                     }
