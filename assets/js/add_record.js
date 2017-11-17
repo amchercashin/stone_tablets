@@ -20,7 +20,8 @@ function add_record() {
                                             document.getElementById("add_record_result").className = "";
                                         } else {
                                             document.getElementById("add_record_result").innerHTML = 
-                                                "transaction: <a href='https://" + global_active_network + ".etherscan.io/tx/" + receipt.transactionHash + "'>" +
+                                                "transaction: <a href='https://" + global_active_network + ".etherscan.io/tx/" + 
+                                                receipt.transactionHash + "' target='_blank'>" +
                                                 receipt.transactionHash + "</a> failed!";
                                             document.getElementById("add_record_result").className = "tx_error";
                                         }

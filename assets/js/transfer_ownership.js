@@ -19,7 +19,8 @@ function transfer_ownership() {
                                         document.getElementById("transfer_ownership_result").className = "";
                                     } else {
                                         document.getElementById("transfer_ownership_result").innerHTML = 
-                                        "transaction: <a href='https://" + global_active_network + ".etherscan.io/tx/" + receipt.transactionHash + "'>"
+                                        "transaction: <a href='https://" + global_active_network + ".etherscan.io/tx/" + 
+                                        receipt.transactionHash + "' target='_blank'>" +
                                         receipt.transactionHash + "</a> failed!";
                                         document.getElementById("transfer_ownership_result").className = "tx_error";
                                     }
