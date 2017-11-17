@@ -26,9 +26,9 @@ title: Littera scripta manet
     <script>
         var global_active_account;
         window.addEventListener('load', function() {
-            console.log(web3.eth.accounts[0]);
+            //console.log(web3.eth.accounts[0]);
             // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-            if (typeof web3.eth.accounts[0] !== 'undefined') {
+            if (typeof web3 !== 'undefined') {
                 // Use Mist/MetaMask's provider
                 window.web3 = new Web3(web3.currentProvider);
                 global_active_account = web3.eth.accounts[0];
