@@ -73,14 +73,14 @@ title: Littera scripta manet
 <body>
     <div id="MetaMask_warning"></div>
     <fieldset>
-        <legend><h2>Make new tablet</h2></legend>
+        <legend><h2>Tablet factory</h2></legend>
         
         Tablet factory address: <br>
         <input type="text" size="42" id="tablet_factory" value="0x9924acd73e60c015b3385144243b71aa78d73387" disabled></input> 
         
         <p>Tablet name:<br>
         <input id="desired_tablet_name" type="text" maxlength=32 size=32 pattern="^[0-9a-fA-F]$">
-        <input type="button" value="create tablet" onclick="make_tablet()">
+        <input type="button" value="make tablet" onclick="make_tablet()">
         <input type="checkbox" id="tip" value="tip_me"> tip </input>
         <input id="tip_value" type="number" min=0 value=0.01 step=0.01 style="width:50px;"> ETH</input>
         </p>
@@ -89,9 +89,9 @@ title: Littera scripta manet
     </fieldset>
     <p></p>
     <fieldset>
-            <legend><h2>Show tablets created by you</h2></legend>
+            <legend><h2>Tablets created by you</h2></legend>
             
-            Choose desired addres in MetaMask then click <input type="button" value="show my tablets" onclick="show_tablets()">
+            Choose desired addres in MetaMask then click <input type="button" value="show tablets" onclick="show_tablets()">
                 <input type="button" value="clear" onclick="document.getElementById('my_tablets').innerHTML = ''"></p>
     
             <p id="my_tablets"></p>
