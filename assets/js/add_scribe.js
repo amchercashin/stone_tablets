@@ -18,8 +18,10 @@ function add_scribe() {
                                         document.getElementById("add_scribe_result").innerHTML = "scribe has been added!";
                                         document.getElementById("add_scribe_result").className = "";
                                     } else {
-                                        document.getElementById("add_scribe_result").innerHTML = "transaction error, check it on Etherscan";
-                                        document.getElementById("add_scribe_result").className = "";
+                                        document.getElementById("add_scribe_result").innerHTML = 
+                                        "transaction: <a href='https://etherscan.io/tx/'" + receipt.transactionHash + ">" +
+                                        receipt.transactionHash + "</a> failed!";
+                                        document.getElementById("add_scribe_result").className = "tx_error";
                                     }
                                     clearInterval(record_listener);
                                 }

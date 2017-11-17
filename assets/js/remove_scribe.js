@@ -18,8 +18,10 @@ function remove_scribe() {
                                         document.getElementById("remove_scribe_result").innerHTML = "scribe has been removed!";
                                         document.getElementById("remove_scribe_result").className = "";
                                     } else {
-                                        document.getElementById("remove_scribe_result").innerHTML = "transaction error, check it on Etherscan";
-                                        document.getElementById("remove_scribe_result").className = "";
+                                        document.getElementById("remove_scribe_result").innerHTML = 
+                                        "transaction: <a href='https://etherscan.io/tx/'" + receipt.transactionHash + ">" +
+                                        receipt.transactionHash + "</a> failed!";
+                                        document.getElementById("remove_scribe_result").className = "tx_error";
                                     }
                                     clearInterval(record_listener);
                                 }

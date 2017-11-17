@@ -18,8 +18,10 @@ function transfer_ownership() {
                                         document.getElementById("transfer_ownership_result").innerHTML = "ownership has been transferred!";
                                         document.getElementById("transfer_ownership_result").className = "";
                                     } else {
-                                        document.getElementById("transfer_ownership_result").innerHTML = "transaction error, check it on Etherscan";
-                                        document.getElementById("transfer_ownership_result").className = "";
+                                        document.getElementById("transfer_ownership_result").innerHTML = 
+                                        "transaction: <a href='https://etherscan.io/tx/'" + receipt.transactionHash + ">" +
+                                        receipt.transactionHash + "</a> failed!";
+                                        document.getElementById("transfer_ownership_result").className = "tx_error";
                                     }
                                     clearInterval(record_listener);
                                 }

@@ -4,17 +4,17 @@
 @import "{{ site.theme }}";
 
 .wrapper {
-    width:1060px;
+    width: 1060px;
   }
 
 section {
-    width:700px;
+    width: 700px;
   }
 
 header ul li + li + li + li {
-    border-right:none;
-    width:89px;
-    float:none;
+    border-right: none;
+    width: 89px;
+    float: none;
 }
 
 .pending {
@@ -32,13 +32,13 @@ header ul li + li + li + li {
 }
 
 .wallet_link {
-    cursor:pointer;
-    color:blue;
-    text-decoration:underline;
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
 }
 
 .wallet_link:hover {
-    text-decoration:none;
+    text-decoration: none;
     text-shadow: 1px 1px 1px #555;
 }
 
@@ -75,4 +75,8 @@ th, td {
 #MetaMask_warning {
     background-color: #ffdddd;
     border-left: 6px solid #f44336;
+}
+
+.tx_error {
+    color: red;
 }
