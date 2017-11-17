@@ -15,7 +15,7 @@ function add_record() {
                                 if(!error) {
                                     console.log("receipt: " + receipt);
                                     if (receipt) {
-                                        if (receipt.status) {
+                                        if (receipt.status == 1) {
                                             document.getElementById("add_record_result").innerHTML = "record has been added!";
                                             document.getElementById("add_record_result").className = "";
                                         } else {

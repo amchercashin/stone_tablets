@@ -14,7 +14,7 @@ function transfer_ownership() {
                             if(!error) {
                                 console.log("receipt: " + receipt);
                                 if (receipt) {
-                                    if (receipt.status) {
+                                    if (receipt.status == 1) {
                                         document.getElementById("transfer_ownership_result").innerHTML = "ownership has been transferred!";
                                         document.getElementById("transfer_ownership_result").className = "";
                                     } else {

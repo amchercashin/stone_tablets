@@ -14,7 +14,7 @@ function add_scribe() {
                             if(!error) {
                                 console.log("receipt: " + receipt);
                                 if (receipt) {
-                                    if (receipt.status) {
+                                    if (receipt.status == 1) {
                                         document.getElementById("add_scribe_result").innerHTML = "scribe has been added!";
                                         document.getElementById("add_scribe_result").className = "";
                                     } else {
