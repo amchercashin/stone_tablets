@@ -11,5 +11,3 @@ function open_tab(tab) {
     document.getElementById(tab).style.display = "inline";
     //evt.currentTarget.className += " active";
 }
-
-document.getElementById("defaultOpen").click();

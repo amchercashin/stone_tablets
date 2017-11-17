@@ -28,6 +28,7 @@ title: Littera scripta manet
         var global_active_account;
         var global_active_network;
         window.addEventListener('load', function() {
+            document.getElementById("defaultOpen").click();
             //console.log(web3.eth.accounts[0]);
             // Checking if Web3 has been injected by the browser (Mist/MetaMask)
             if (typeof web3 !== 'undefined') {
@@ -103,7 +104,7 @@ title: Littera scripta manet
         </fieldset>
     </div>
 
-    <p></p>
+    <!-- <p></p> -->
 
     <div id="tablet_tab" class="tabcontent">
         <fieldset>
@@ -122,8 +123,8 @@ title: Littera scripta manet
         </fieldset>    
     </div>
     
-    <p></p>
-    
+    <!-- <p></p> -->
+
     <div id="settings_tab" class="tabcontent">
         <fieldset>
             <legend><h2>Tablet settings</h2></legend>
