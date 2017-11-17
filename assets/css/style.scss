@@ -21,11 +21,6 @@ header ul a {
     height:34px;
   }
 
-header ul li + li + li {
-    border-right: none;
-    width: 89px;
-}
-
 .pending {
     -webkit-animation: pending 2s infinite;
 }
