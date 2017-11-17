@@ -5,4 +5,8 @@ function MetaMask_check() {
         <p><strong>&nbsp;Warning</strong> Install MetaMask Chrome addon and connect to your account.</p>
         `
     }
+
+    if (typeof web3.eth.accounts[0] !== global_active_account) {
+        global_active_account = web3.eth.accounts[0];
+    }
 }

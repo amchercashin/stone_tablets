@@ -7,7 +7,7 @@ function make_tablet() {
     if (document.getElementById("tip").checked) {
         tip = document.getElementById("tip_value").value * Math.pow(10,18);
     }
-    tablet_factory_instance.create_tablet(desired_tablet_name, {from:web3.eth.accounts[0], to:tablet_factory, value:tip},
+    tablet_factory_instance.create_tablet(desired_tablet_name, {from:global_active_account, to:tablet_factory, value:tip},
         function(error, tx_create_tablet){
             if(!error) {
                 document.getElementById("new_tablet_address").innerHTML = "pending table creation";

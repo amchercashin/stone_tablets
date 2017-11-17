@@ -2,7 +2,7 @@ function add_scribe() {
     MetaMask_check();
     var tablet_address = document.getElementById("settings_tablet").value;
     var tablet_instance = get_tablet_instance(tablet_address);
-    tablet_instance.add_scribe(document.getElementById("add_scribe_address").value, {from:web3.eth.accounts[0], value:""},
+    tablet_instance.add_scribe(document.getElementById("add_scribe_address").value, {from:global_active_account, value:""},
         function add_scribe_call(error, tx_scribe_add) {
             if (!error) {
                 document.getElementById("add_scribe_result").innerHTML = "adding";

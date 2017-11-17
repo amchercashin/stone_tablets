@@ -1,7 +1,7 @@
 function show_tablets() {
     MetaMask_check();
     document.getElementById("my_tablets").innerHTML = "";
-    var creator_address = web3.eth.accounts[0];
+    var creator_address = global_active_account;
     var tablet_factory_instance = get_tablet_factory_instance(document.getElementById("tablet_factory").value);
      console.log(tablet_factory_instance);
     tablet_factory_instance.creator_tablets_count.call(creator_address,

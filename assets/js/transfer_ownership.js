@@ -2,7 +2,7 @@ function transfer_ownership() {
     MetaMask_check();
     var tablet_address = document.getElementById("settings_tablet").value;
     var tablet_instance = get_tablet_instance(tablet_address);
-    tablet_instance.change_owner(document.getElementById("transfer_ownership_address").value, {from:web3.eth.accounts[0], value:""},
+    tablet_instance.change_owner(document.getElementById("transfer_ownership_address").value, {from:global_active_account, value:""},
         function transfer_ownership_call(error, tx_transfer_ownership) {
             if (!error) {
                 document.getElementById("transfer_ownership_result").innerHTML = "transferring";

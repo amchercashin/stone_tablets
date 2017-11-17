@@ -23,13 +23,14 @@ title: Littera scripta manet
     <script src="assets/js/remove_scribe.js"></script>
     <script src="assets/js/transfer_ownership.js"></script>
 
-    <script>        
-        window.addEventListener('load', function MetaMask_load() {
-
+    <script>
+        var global_active_account;
+        window.addEventListener('load', function MetaMask_load() {        
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof web3 !== 'undefined') {
         // Use Mist/MetaMask's provider
         window.web3 = new Web3(web3.currentProvider);
+        global_active_account = web3.eth.accounts[0];
     } else {
         //console.log('No web3? You should consider trying MetaMask!')
         // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
