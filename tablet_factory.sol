@@ -21,7 +21,7 @@ contract tablet_factory {
     }
 
     function create_tablet(bytes32 new_tablet_name) public payable returns (address) {
-        if (!is_creator(msg.sender)) creators.push(msg.sender);
+        if (!is_creator(msg.sender)) {creators.push(msg.sender);}
         address new_tablet_address = new tablet(new_tablet_name, msg.sender);
         tablets[msg.sender].push(tablet_struct(new_tablet_name, new_tablet_address));
         return new_tablet_address;
