@@ -12,6 +12,7 @@ function MetaMask_check() {
                 case "1":
                 console.log('This is mainnet');
                 global_active_network = "";
+                global_factory = "0x1cf47e78bf9c5e0403facf7b9b261be3998deb8f";
                 break
                 case "2":
                 console.log('This is the deprecated Morden test network.')
@@ -20,6 +21,7 @@ function MetaMask_check() {
                 case "3":
                 console.log('This is the ropsten test network.')
                 global_active_network = "ropsten";
+                global_factory = "0x7262d059d92a15bef4fd2071ad4f9c066d050bfc";
                 break
                 case "42":
                 console.log('This is the ropsten test network.')
@@ -32,6 +34,7 @@ function MetaMask_check() {
                 default:
                 console.log('This is an unknown network.')
             }
+            document.getElementById("tablet_factory").value = global_factory;
         })
     }
 }

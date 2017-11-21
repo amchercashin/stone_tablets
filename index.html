@@ -27,6 +27,7 @@ title: Littera scripta manet
     <script>
         var global_active_account;
         var global_active_network;
+        var global_factory;
         window.addEventListener('load', function() {
             document.getElementById("defaultOpen").click();
             //console.log(web3.eth.accounts[0]);
@@ -40,6 +41,7 @@ title: Littera scripta manet
                         case "1":
                         console.log('This is mainnet');
                         global_active_network = "";
+                        global_factory = "0x1cf47e78bf9c5e0403facf7b9b261be3998deb8f";                        
                         break
                         case "2":
                         console.log('This is the deprecated Morden test network.')
@@ -48,6 +50,7 @@ title: Littera scripta manet
                         case "3":
                         console.log('This is the ropsten test network.')
                         global_active_network = "ropsten";
+                        global_factory = "0x7262d059d92a15bef4fd2071ad4f9c066d050bfc";
                         break
                         case "42":
                         console.log('This is the ropsten test network.')
@@ -60,6 +63,7 @@ title: Littera scripta manet
                         default:
                         console.log('This is an unknown network.')
                     }
+                    document.getElementById("tablet_factory").value = global_factory;
                 })
             } else {
                 window.document.getElementById("MetaMask_warning").innerHTML = 
@@ -79,7 +83,7 @@ title: Littera scripta manet
             <legend><h2>Tablet factory</h2></legend>
             
             Tablet factory address: <br>
-            <input type="text" size="42" id="tablet_factory" value="0x9924acd73e60c015b3385144243b71aa78d73387" disabled></input> 
+            <input type="text" size="42" id="tablet_factory" value="" disabled></input> 
             
             <p>Tablet name:<br>
             <input id="desired_tablet_name" type="text" maxlength=32 size=32 pattern="^[0-9a-fA-F]$">
